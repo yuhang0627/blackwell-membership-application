@@ -1,0 +1,13 @@
+{
+    "name": "Promotion",
+    "alias": "promotion",
+    "description": "Promotion and reward management module — tiers, daily processing, and reward reports.",
+    "keywords": ["promotion", "reward", "referral"],
+    "priority": 1,
+    "providers": [
+        "Modules\\Promotion\\Providers\\PromotionServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

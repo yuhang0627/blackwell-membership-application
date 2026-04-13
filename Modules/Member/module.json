@@ -1,0 +1,13 @@
+{
+    "name": "Member",
+    "alias": "member",
+    "description": "Member management module — registration, CRUD, referrals, and document handling.",
+    "keywords": ["member", "registration", "referral"],
+    "priority": 0,
+    "providers": [
+        "Modules\\Member\\Providers\\MemberServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
