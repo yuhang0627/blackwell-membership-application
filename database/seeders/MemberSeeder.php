@@ -22,7 +22,7 @@ class MemberSeeder extends Seeder
             [
                 'first_name'    => 'Alice',
                 'last_name'     => 'Anderson',
-                'phone'         => '+60-12-3456789',
+                'phone'         => '+60123456789',
                 'date_of_birth' => '1990-05-15',
                 'gender'        => 'female',
                 'nationality'   => 'Malaysian',
@@ -39,7 +39,7 @@ class MemberSeeder extends Seeder
             [
                 'first_name'    => 'Bob',
                 'last_name'     => 'Baker',
-                'phone'         => '+60-11-9876543',
+                'phone'         => '+60119876543',
                 'date_of_birth' => '1988-09-22',
                 'gender'        => 'male',
                 'nationality'   => 'Malaysian',
@@ -57,7 +57,7 @@ class MemberSeeder extends Seeder
             [
                 'first_name'    => 'Carol',
                 'last_name'     => 'Chen',
-                'phone'         => '+60-16-1234567',
+                'phone'         => '+60161234567',
                 'date_of_birth' => '1995-03-10',
                 'gender'        => 'female',
                 'nationality'   => 'Malaysian',
@@ -74,7 +74,7 @@ class MemberSeeder extends Seeder
             [
                 'first_name'    => 'David',
                 'last_name'     => 'Tan',
-                'phone'         => '+60-17-7654321',
+                'phone'         => '+60177654321',
                 'date_of_birth' => '1992-11-30',
                 'gender'        => 'male',
                 'nationality'   => 'Malaysian',
@@ -92,7 +92,7 @@ class MemberSeeder extends Seeder
             [
                 'first_name'    => 'Eve',
                 'last_name'     => 'Lim',
-                'phone'         => '+60-13-2468135',
+                'phone'         => '+60132468135',
                 'date_of_birth' => '1998-07-04',
                 'gender'        => 'female',
                 'nationality'   => 'Malaysian',
@@ -139,7 +139,7 @@ class MemberSeeder extends Seeder
                 [
                     'first_name'    => "Member",
                     'last_name'     => "No{$i}",
-                    'phone'         => "+60-1{$i}-1234567",
+                    'phone'         => "+601{$i}1234567",
                     'date_of_birth' => '1990-01-01',
                     'gender'        => 'male',
                     'nationality'   => 'Malaysian',
