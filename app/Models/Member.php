@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class Member extends Model
@@ -41,6 +42,20 @@ class Member extends Model
             if (empty($member->referral_code)) {
                 $member->referral_code = static::generateUniqueReferralCode();
             }
+        });
+
+        static::deleting(function (Member $member) {
+            if (! $member->isForceDeleting()) {
+                return;
+            }
+
+            foreach ($member->addresses()->with('documents')->get() as $address) {
+                Storage::disk('public')->deleteDirectory("addresses/{$address->id}");
+                $address->documents()->delete();
+            }
+
+            Storage::disk('public')->deleteDirectory("members/{$member->id}");
+            $member->documents()->delete();
         });
     }
 
@@ -127,7 +142,14 @@ class Member extends Model
               ->orWhere('email', 'like', "%{$search}%")
               ->orWhere('referral_code', 'like', "%{$search}%")
               ->orWhere('phone', 'like', "%{$search}%")
-              ->orWhere('ic_number', 'like', "%{$search}%");
+              ->orWhere('ic_number', 'like', "%{$search}%")
+              ->orWhereHas('referrer', function ($referrerQuery) use ($search) {
+                  $referrerQuery
+                      ->where('first_name', 'like', "%{$search}%")
+                      ->orWhere('last_name', 'like', "%{$search}%")
+                      ->orWhere('email', 'like', "%{$search}%")
+                      ->orWhere('referral_code', 'like', "%{$search}%");
+              });
         });
     }
 

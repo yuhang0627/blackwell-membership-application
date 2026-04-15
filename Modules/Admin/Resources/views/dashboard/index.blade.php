@@ -8,66 +8,66 @@
 {{-- Stats --}}
 <div class="row g-3 mb-4">
     <div class="col-sm-6 col-xl-2">
-        <div class="card stat-card text-white bg-primary">
+        <div class="card stat-card text-white bg-primary h-100">
             <div class="card-body d-flex justify-content-between align-items-center">
                 <div>
-                    <div class="fs-4 fw-bold">{{ number_format($stats['total_members']) }}</div>
-                    <small>Total Members</small>
+                    <div class="fs-4 fw-bold stat-value">{{ number_format($stats['total_members']) }}</div>
+                    <small class="stat-label">Total Members</small>
                 </div>
                 <i class="bi bi-people stat-icon"></i>
             </div>
         </div>
     </div>
     <div class="col-sm-6 col-xl-2">
-        <div class="card stat-card text-white bg-success">
+        <div class="card stat-card text-white bg-success h-100">
             <div class="card-body d-flex justify-content-between align-items-center">
                 <div>
-                    <div class="fs-4 fw-bold">{{ number_format($stats['approved']) }}</div>
-                    <small>Approved</small>
+                    <div class="fs-4 fw-bold stat-value">{{ number_format($stats['approved']) }}</div>
+                    <small class="stat-label">Approved</small>
                 </div>
                 <i class="bi bi-person-check stat-icon"></i>
             </div>
         </div>
     </div>
     <div class="col-sm-6 col-xl-2">
-        <div class="card stat-card text-dark bg-warning">
+        <div class="card stat-card text-dark bg-warning h-100">
             <div class="card-body d-flex justify-content-between align-items-center">
                 <div>
-                    <div class="fs-4 fw-bold">{{ number_format($stats['pending']) }}</div>
-                    <small>Pending</small>
+                    <div class="fs-4 fw-bold stat-value">{{ number_format($stats['pending']) }}</div>
+                    <small class="stat-label">Pending</small>
                 </div>
                 <i class="bi bi-hourglass stat-icon"></i>
             </div>
         </div>
     </div>
     <div class="col-sm-6 col-xl-2">
-        <div class="card stat-card text-white bg-secondary">
+        <div class="card stat-card text-white bg-secondary h-100">
             <div class="card-body d-flex justify-content-between align-items-center">
                 <div>
-                    <div class="fs-4 fw-bold">{{ number_format($stats['terminated']) }}</div>
-                    <small>Terminated</small>
+                    <div class="fs-4 fw-bold stat-value">{{ number_format($stats['terminated']) }}</div>
+                    <small class="stat-label">Terminated</small>
                 </div>
                 <i class="bi bi-person-x stat-icon"></i>
             </div>
         </div>
     </div>
     <div class="col-sm-6 col-xl-2">
-        <div class="card stat-card text-white" style="background:#0dcaf0">
+        <div class="card stat-card text-white h-100" style="background:#0dcaf0">
             <div class="card-body d-flex justify-content-between align-items-center">
                 <div>
-                    <div class="fs-4 fw-bold">{{ $stats['active_promos'] }}</div>
-                    <small>Active Promos</small>
+                    <div class="fs-4 fw-bold stat-value">{{ $stats['active_promos'] }}</div>
+                    <small class="stat-label">Active Promos</small>
                 </div>
                 <i class="bi bi-megaphone stat-icon"></i>
             </div>
         </div>
     </div>
     <div class="col-sm-6 col-xl-2">
-        <div class="card stat-card text-white bg-danger">
+        <div class="card stat-card text-white bg-danger h-100">
             <div class="card-body d-flex justify-content-between align-items-center">
                 <div>
-                    <div class="fs-4 fw-bold">USD {{ number_format($stats['total_rewards'], 2) }}</div>
-                    <small>Rewards Issued</small>
+                    <div class="fs-4 fw-bold stat-value">USD {{ number_format($stats['total_rewards'], 2) }}</div>
+                    <small class="stat-label">Rewards Issued</small>
                 </div>
                 <i class="bi bi-trophy stat-icon"></i>
             </div>

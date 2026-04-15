@@ -226,7 +226,18 @@ class MemberController extends Controller
     // ── Destroy ───────────────────────────────────────────────────────────
     public function destroy(Member $member): RedirectResponse
     {
-        $member->delete();
+        $member->load(['addresses.documents', 'documents']);
+
+        foreach ($member->addresses as $address) {
+            Storage::disk('public')->deleteDirectory("addresses/{$address->id}");
+            $address->documents()->delete();
+            $address->delete();
+        }
+
+        Storage::disk('public')->deleteDirectory("members/{$member->id}");
+        $member->documents()->delete();
+        $member->forceDelete();
+
         return redirect()->route('members.index')->with('success', 'Member deleted successfully.');
     }
 

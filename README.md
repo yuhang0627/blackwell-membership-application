@@ -21,6 +21,7 @@ A membership management system built with Laravel 11, featuring member CRUD, a r
 - Referral system — unique referral code per member, referral tree display
 - Address management — multiple addresses with configurable types
 - Promotion & reward system — 4 tiers (fixed + recurring)
+- Promotion management — create and update promotion periods and tier settings
 - Daily reward processing via Artisan scheduled command
 - CSV export for member list and reward reports
 - Admin dashboard with summary stats
@@ -112,6 +113,7 @@ Visit [http://localhost:8000](http://localhost:8000)
 | Dashboard | `/admin/dashboard` |
 | Members List | `/members` |
 | Add Member | `/members/create` |
+| Promotion Setup | `/promotions` |
 | Reward Report | `/rewards` |
 | Export Members CSV | `/members/export/csv` |
 | Export Rewards CSV | `/rewards/export` |

@@ -6,7 +6,6 @@ use App\Models\Member;
 use App\Models\Promotion;
 use App\Models\RewardAchiever;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\DB;
 
 class ProcessDailyRewards extends Command
 {
@@ -42,15 +41,16 @@ class ProcessDailyRewards extends Command
     {
         $this->line("Processing promotion: [{$promotion->id}] {$promotion->name}");
 
-        // Count referrals per member that were registered during the promotion window
+        // Keep the referral filter in both queries so the command works on SQLite too.
         $members = Member::withCount([
             'referrals as referrals_count' => function ($query) use ($promotion) {
-                $query->whereBetween('created_at', [
-                    $promotion->start_date->startOfDay(),
-                    $promotion->end_date->endOfDay(),
-                ]);
+                $this->applyValidReferralWindow($query, $promotion);
             },
-        ])->having('referrals_count', '>', 0)->get();
+        ])
+            ->whereHas('referrals', function ($query) use ($promotion) {
+                $this->applyValidReferralWindow($query, $promotion);
+            })
+            ->get();
 
         $this->line("  Members with referrals: {$members->count()}");
 
@@ -151,5 +151,15 @@ class ProcessDailyRewards extends Command
             "    {$prefix}Reward → Member: {$member->full_name} | Tier {$tier} | {$count} referrals | USD " .
             number_format($amount, 2)
         );
+    }
+
+    private function applyValidReferralWindow($query, Promotion $promotion): void
+    {
+        $query
+            ->where('status', 'approved')
+            ->whereBetween('created_at', [
+                $promotion->start_date->startOfDay(),
+                $promotion->end_date->endOfDay(),
+            ]);
     }
 }

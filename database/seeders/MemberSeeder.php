@@ -183,8 +183,8 @@ class MemberSeeder extends Seeder
                 'member_id'                     => $alice->id,
                 'promotion_id'                  => $promotion->id,
                 'tier_number'                   => 2,
-                'referral_count_at_achievement' => 12,
-                'reward_amount'                 => 100.00,
+                'referral_count_at_achievement' => 50,
+                'reward_amount'                 => 500.00,
                 'achieved_at'                   => '2026-02-15',
             ],
             [

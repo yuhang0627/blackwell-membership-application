@@ -22,8 +22,24 @@
         .sidebar-brand { color: #fff; font-size: 1.2rem; font-weight: 700; }
         .main-content { padding: 1.5rem; }
         .card { border: none; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
-        .stat-card .card-body { padding: 1.4rem; }
-        .stat-card .stat-icon { font-size: 2rem; opacity: .6; }
+        .stat-card { height: 100%; }
+        .stat-card .card-body {
+            min-height: 108px;
+            padding: 1.4rem;
+        }
+        .stat-card .stat-value {
+            line-height: 1.1;
+            word-break: break-word;
+        }
+        .stat-card .stat-label {
+            display: block;
+            margin-top: .35rem;
+        }
+        .stat-card .stat-icon {
+            flex-shrink: 0;
+            font-size: 2rem;
+            opacity: .6;
+        }
         .badge-pending   { background: #ffc107; color: #000; }
         .badge-approved  { background: #198754; }
         .badge-rejected  { background: #dc3545; }
@@ -57,6 +73,12 @@
                     <a class="nav-link {{ request()->routeIs('members.*') ? 'active' : '' }}"
                        href="{{ route('members.index') }}">
                         <i class="bi bi-people"></i> Members
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('promotions.*') ? 'active' : '' }}"
+                       href="{{ route('promotions.index') }}">
+                        <i class="bi bi-megaphone"></i> Promotions
                     </a>
                 </li>
                 <li class="nav-item">
